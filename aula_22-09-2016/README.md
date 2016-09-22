@@ -4,4 +4,5 @@
 
 ### Controle de versão com git e github
 
-Pasta para prática de uso do git em aula.
+Pasta para prática de uso do git em aula. 
+Os alunos devem adicionar os arquivos gerados na aula nesta pasta.
