@@ -44,13 +44,14 @@ void loop() {
         i = 0;
         sensorTemperature = 0;
         sensorTemperature = (data[1] << 8) | data[0];                   //Transforma LSB e MSB num dado do tipo inteiro
-        tempCelsius =+ ((1.5*sensorTemperature/1023) - 0.986)/0.00355;  //Calculo do valor da temperatura do sensor interno do MSP430G2553
+        tempCelsius += ((1.5*sensorTemperature/1023) - 0.986)/0.00355;  //Calculo do valor da temperatura do sensor interno do MSP430G2553
         numSamples++;
         if(numSamples == 8){
             numSamples = 0;
-            avgTempCelsius = tempCelsius / 8;
+            avgTempCelsius = tempCelsius / 8.0;
+            tempCelsius = 0;
             Serial.print("Temperatura: ");
-            Serial.print(tempCelsius);
+            Serial.print(avgTempCelsius);
             Serial.println("°C"); 
         }
     }
