@@ -125,7 +125,7 @@ void initI2Cpins(){
 }
 
 
-
+//INICIA O I2C
 void initI2C(){
   
   while (UCB0CTL1 & UCTXSTP);                   //ESPERA O BIT DE STOP
@@ -136,7 +136,6 @@ void initI2C(){
   UCB0CTL1 = UCSWRST+UCSSEL_2+UCTR;             //DESABILITA O I2C + SMCLK + MODO TRANSMISSAO
   
   UCB0I2CSA = endereco_escravo;                 //ENDERECO DO ESCRAVO
- // UCB0I2COA = 0x01A5;                         //ENDERECO PROPRIO 
   
   UCB0BR0 = 12;                                 //CLK/12
   UCB0BR1 = 0;
@@ -147,7 +146,7 @@ void initI2C(){
   
   //IE2 |= UCB0TXIE;                              //ATIVA A INTERRUPCAO TX
 }
-
+//ENVIA PELO I2C
 void enviaI2C(){
   while (UCB0CTL1 & UCTXSTP);             // Ensure stop condition got sent
   UCB0CTL1 |= UCTXSTT;                  //CODICAO DE INICIO
@@ -158,7 +157,7 @@ void enviaI2C(){
 #endif
 
 
-
+//INICIA O LCD
 void init_Lcd(int modo1, int modo2)
 {
 #ifndef __I2C__
